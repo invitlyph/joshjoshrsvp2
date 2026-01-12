@@ -317,6 +317,33 @@ function copyInfo(text, element) {
   setState(false);
 })();
 
+(function initGiftToggle() {
+  const content = document.getElementById('giftContent');
+  const toggleBtn = document.querySelector('.gift-toggle');
+  if (!content || !toggleBtn) return;
+
+  const label = toggleBtn.querySelector('.toggle-label');
+  const collapsedLabel = 'Show Ways to Bless Us';
+  const expandedLabel = 'Hide Ways to Bless Us';
+
+  function setState(expanded) {
+    content.classList.toggle('is-expanded', expanded);
+    content.classList.toggle('is-collapsed', !expanded);
+    content.setAttribute('aria-hidden', expanded ? 'false' : 'true');
+    toggleBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    if (label) {
+      label.textContent = expanded ? expandedLabel : collapsedLabel;
+    }
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const isExpanded = content.classList.contains('is-expanded');
+    setState(!isExpanded);
+  });
+
+  setState(false);
+})();
+
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {

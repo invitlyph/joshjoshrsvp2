@@ -37,6 +37,65 @@
     },
   ];
 
+  function Icon({ name }) {
+    const commonProps = {
+      width: 18,
+      height: 18,
+      viewBox: '0 0 24 24',
+      fill: 'none',
+      stroke: 'currentColor',
+      strokeWidth: 1.8,
+      strokeLinecap: 'round',
+      strokeLinejoin: 'round'
+    };
+
+    let elements = [];
+
+    switch (name) {
+      case 'prev':
+        elements = [
+          React.createElement('polyline', { key: 'a', points: '19 20 9 12 19 4' }),
+          React.createElement('line', { key: 'b', x1: 9, y1: 19, x2: 9, y2: 5 })
+        ];
+        break;
+      case 'next':
+        elements = [
+          React.createElement('polyline', { key: 'a', points: '5 4 15 12 5 20' }),
+          React.createElement('line', { key: 'b', x1: 15, y1: 5, x2: 15, y2: 19 })
+        ];
+        break;
+      case 'play':
+        elements = [
+          React.createElement('polygon', { key: 'a', points: '6 4 20 12 6 20' })
+        ];
+        break;
+      case 'pause':
+        elements = [
+          React.createElement('rect', { key: 'a', x: 6, y: 4, width: 4, height: 16 }),
+          React.createElement('rect', { key: 'b', x: 14, y: 4, width: 4, height: 16 })
+        ];
+        break;
+      case 'volume-on':
+        elements = [
+          React.createElement('polygon', { key: 'a', points: '11 5 6 9 2 9 2 15 6 15 11 19' }),
+          React.createElement('path', { key: 'b', d: 'M15 9a4 4 0 0 1 0 6' }),
+          React.createElement('path', { key: 'c', d: 'M19 7a8 8 0 0 1 0 10' })
+        ];
+        break;
+      case 'volume-off':
+        elements = [
+          React.createElement('polygon', { key: 'a', points: '11 5 6 9 2 9 2 15 6 15 11 19' }),
+          React.createElement('line', { key: 'b', x1: 23, y1: 9, x2: 17, y2: 15 }),
+          React.createElement('line', { key: 'c', x1: 17, y1: 9, x2: 23, y2: 15 })
+        ];
+        break;
+      default:
+        elements = [];
+    }
+
+    return React.createElement('svg', commonProps, elements);
+  }
+
   function FloatingMusicPlayer(){
     // Start on a random track
     const [index, setIndex] = useState(() => Math.floor(Math.random() * PLAYLIST.length));
@@ -270,15 +329,15 @@
           })
         ),
         React.createElement('div', { className: 'controls' },
-          React.createElement('button', { className: 'btn ghost', onClick: prev, 'aria-label': 'Previous' }, '\u23EE'),
-          React.createElement('button', { className: 'btn', onClick: toggle, 'aria-label': playing ? 'Pause' : 'Play' }, playing ? '\u23F8' : '\u25B6'),
-          React.createElement('button', { className: 'btn ghost', onClick: next, 'aria-label': 'Next' }, '\u23ED'),
+          React.createElement('button', { className: 'btn ghost', onClick: prev, 'aria-label': 'Previous' }, React.createElement(Icon, { name: 'prev' })),
+          React.createElement('button', { className: 'btn', onClick: toggle, 'aria-label': playing ? 'Pause' : 'Play' }, React.createElement(Icon, { name: playing ? 'pause' : 'play' })),
+          React.createElement('button', { className: 'btn ghost', onClick: next, 'aria-label': 'Next' }, React.createElement(Icon, { name: 'next' })),
           React.createElement('div', { style: { flex: 1 } }),
           React.createElement('button', {
             className: 'btn ghost',
             onClick: toggleMute,
             'aria-label': isMuted ? 'Unmute audio' : 'Mute audio'
-          }, isMuted ? '\uD83D\uDD07' : '\uD83D\uDD0A'),
+          }, React.createElement(Icon, { name: isMuted ? 'volume-off' : 'volume-on' })),
           React.createElement('input', {
             className: 'volume', type: 'range', min: 0, max: 1, step: 0.01, value: vol,
             onChange: changeVol, 'aria-label': 'Volume', title: 'Volume'

@@ -480,9 +480,25 @@
         </div>
         <!-- Gifts: Ways to Bless Us -->
         <div class="gift-section">
-          <h3 class="script-title">Ways to Bless Us</h3>
-          <p class="gift-intro">Choose whichever option is most convenient for you:</p>
-          <div class="gift-grid">
+          <div class="gift-section-header">
+            <h3 class="script-title">Ways to Bless Us</h3>
+            <p class="gift-intro">Choose whichever option is most convenient for you:</p>
+            <div class="gift-toggle-wrap">
+              <button 
+                class="btn outline gift-toggle" 
+                type="button"
+                aria-expanded="false"
+                aria-controls="giftContent"
+              >
+                <span class="toggle-label">Show Ways to Bless Us</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div id="giftContent" class="gift-content is-collapsed" aria-hidden="true">
+            <div class="gift-grid">
             <div class="gift-method card">
               <div class="gift-method-header">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
@@ -528,8 +544,9 @@
               </div>
               <p class="gift-desc">You may also hand your gift personally at the reception. A gift box will be available at the venue.</p>
             </div>
+            </div>
+            <p class="gift-note">Thank you for being part of our special day. Your love and support mean the world to us.</p>
           </div>
-          <p class="gift-note">Thank you for being part of our special day. Your love and support mean the world to us.</p>
         </div>
       </section>
 
