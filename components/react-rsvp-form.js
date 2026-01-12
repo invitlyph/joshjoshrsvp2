@@ -4,10 +4,11 @@
 // ============================================
 
 ;(function(){
-  const { useMemo, useState, useEffect, useCallback } = React;
+  const { useState, useEffect, useCallback } = React;
   const { createPortal } = ReactDOM;
   const RESPONSE_ROTATION_DELAY = 9000;
   const MESSAGE_MAX_LENGTH = 320;
+  const RSVP_API_ROUTE = '/api/rsvp';
 
   const STATUS_LABELS = {
     yes: 'We\'ll be there',
@@ -15,37 +16,23 @@
     maybe: 'Still confirming'
   };
 
-  function useSupabaseClient(){
-    return useMemo(() => {
-      const url = window.SUPABASE_URL || '';
-      const key = window.SUPABASE_ANON_KEY || '';
-      if (!url || !key || !window.supabase) return null;
-      return window.supabase.createClient(url, key);
-    }, []);
-  }
-
-  function useResponsesFeed(supabase){
+  function useResponsesFeed(){
     const [responses, setResponses] = useState([]);
     const [loadingResponses, setLoadingResponses] = useState(true);
     const [responsesError, setResponsesError] = useState('');
 
     const fetchResponses = useCallback(async () => {
-      if (!supabase) {
-        setResponses([]);
-        setLoadingResponses(false);
-        setResponsesError('');
-        return;
-      }
-
       setLoadingResponses(true);
       setResponsesError('');
       try {
-        const { data, error } = await supabase
-          .from('responses')
-          .select('id, name, status, message, created_at')
-          .order('created_at', { ascending: false });
-        if (error) throw error;
-        const sanitized = (data || []).filter(entry => {
+        const response = await fetch(RSVP_API_ROUTE, {
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!response.ok) {
+          throw new Error('Request failed');
+        }
+        const payload = await response.json();
+        const sanitized = (payload.responses || []).filter(entry => {
           const msg = (entry.message || '').trim();
           return msg.length > 0;
         });
@@ -56,7 +43,7 @@
       } finally {
         setLoadingResponses(false);
       }
-    }, [supabase]);
+    }, []);
 
     useEffect(() => {
       fetchResponses();
@@ -117,7 +104,7 @@
     );
   }
 
-  function RSVPForm({ supabase, refreshResponses }){
+  function RSVPForm({ refreshResponses }){
     const [name, setName] = useState('');
     const [numberOfGuests, setNumberOfGuests] = useState(1);
     const [guestNames, setGuestNames] = useState(['']);
@@ -151,31 +138,44 @@
     async function onSubmit(e){
       e.preventDefault();
       setError('');
-      
-      if (!supabase){
-        setError('Connection error. Please try again later.');
-        return;
-      }
+
       if (!name.trim()){
         setError('Please enter your name.');
         return;
       }
       
-      const allGuests = [name.trim(), ...guestNames.slice(1).map(n => n.trim()).filter(Boolean)];
+      const additionalGuests = guestNames
+        .slice(1)
+        .map(n => (n || '').trim())
+        .filter(Boolean);
+      const allGuests = [name.trim(), ...additionalGuests];
       
       setSubmitting(true);
       try {
-        const payload = { 
-          name: name.trim(),
-          guest_count: numberOfGuests,
-          guest_names: allGuests.join(', '),
-          status, 
-          message: message.trim(), 
-          created_at: new Date().toISOString() 
-        };
-        
-        const { error: dbError } = await supabase.from('responses').insert(payload);
-        if (dbError) throw dbError;
+        const response = await fetch(RSVP_API_ROUTE, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name.trim(),
+            status,
+            message: message.trim(),
+            guestCount: numberOfGuests,
+            guestNames: additionalGuests
+          })
+        });
+
+        if (!response.ok) {
+          let errorMessage = 'There was an error. Please try again.';
+          try {
+            const payload = await response.json();
+            if (payload && payload.error) {
+              errorMessage = payload.error;
+            }
+          } catch (_) {
+            // Ignore JSON parse errors from non-JSON responses
+          }
+          throw new Error(errorMessage);
+        }
         
         setSubmittedData({
           name: name.trim(),
@@ -190,7 +190,8 @@
         }
         
       } catch(err) {
-        setError('There was an error. Please try again.');
+        const messageText = err && err.message ? err.message : 'There was an error. Please try again.';
+        setError(messageText);
         console.error(err);
       } finally {
         setSubmitting(false);
@@ -351,8 +352,7 @@
   }
 
   function RSVPApp(){
-    const supabase = useSupabaseClient();
-    const { responses, loadingResponses, responsesError, fetchResponses } = useResponsesFeed(supabase);
+    const { responses, loadingResponses, responsesError, fetchResponses } = useResponsesFeed();
 
     return React.createElement(React.Fragment, null,
       React.createElement(ResponseSpotlight, { 
@@ -360,10 +360,7 @@
         loadingResponses, 
         responsesError 
       }),
-      React.createElement(RSVPForm, { 
-        supabase, 
-        refreshResponses: fetchResponses 
-      })
+      React.createElement(RSVPForm, { refreshResponses: fetchResponses })
     );
   }
 

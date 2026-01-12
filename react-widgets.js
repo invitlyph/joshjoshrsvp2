@@ -1,5 +1,6 @@
 ;(function(){
-  const { useEffect, useMemo, useRef, useState, useCallback } = React;
+  const { useEffect, useRef, useState, useCallback } = React;
+  const RSVP_API_ROUTE = '/api/rsvp';
 
   // Utility: format seconds to mm:ss
   function fmtTime(sec){
@@ -235,7 +236,7 @@
     );
   }
 
-  // Supabase Response Form
+  // RSVP Form
   function RSVPForm(){
     const [name, setName] = useState('');
     const [status, setStatus] = useState('yes');
@@ -244,41 +245,50 @@
     const [note, setNote] = useState('');
     const [noteType, setNoteType] = useState(''); // 'success' or 'error'
 
-    const supabase = useMemo(() => {
-      const url = window.SUPABASE_URL || '';
-      const key = window.SUPABASE_ANON_KEY || '';
-      if (!url || !key || !window.supabase) return null;
-      return window.supabase.createClient(url, key);
-    }, []);
-
     async function onSubmit(e){
       e.preventDefault();
       setNote('');
       setNoteType('');
-      
-      if (!supabase){
-        setNote('Supabase not configured. Please add your project URL and anon key.');
-        setNoteType('error');
-        return;
-      }
-      if (!name.trim()){
+
+      const trimmedName = (name || '').trim();
+      if (!trimmedName){
         setNote('Please enter your name.');
         setNoteType('error');
         return;
       }
-      
+
       setSubmitting(true);
       try{
-        const payload = { name: name.trim(), status, message: message.trim(), created_at: new Date().toISOString() };
-        const { error } = await supabase.from('responses').insert(payload);
-        if (error) throw error;
-        setNote('Thank you! Your message has been sent to Josh & Joy. 💙');
+        const response = await fetch(RSVP_API_ROUTE, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: trimmedName,
+            status,
+            message: message.trim(),
+            guestCount: 1,
+            guestNames: []
+          })
+        });
+
+        if (!response.ok){
+          let apiError = 'There was an error saving your response. Please try again.';
+          try {
+            const payload = await response.json();
+            if (payload && payload.error){
+              apiError = payload.error;
+            }
+          } catch (_){ }
+          throw new Error(apiError);
+        }
+
+        setNote('Thank you! Your message has been sent to Josh & Joy.');
         setNoteType('success');
         setName('');
         setMessage('');
         setStatus('yes');
       }catch(err){
-        setNote('There was an error saving your response. Please try again.');
+        setNote((err && err.message) || 'There was an error saving your response. Please try again.');
         setNoteType('error');
         console.error(err);
       }finally{

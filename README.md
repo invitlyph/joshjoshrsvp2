@@ -40,31 +40,23 @@ A beautiful, modern wedding invitation website for Josh Macaraig and Joy Delanta
 prenup/
 ├── index.html              # Main HTML file
 ├── styles.css              # Main CSS (imports all components)
-├── css/                    # Componentized CSS
-│   ├── base.css           # Variables, reset, typography
-│   ├── hero.css           # Hero section styles
-│   ├── details.css        # Event details cards
-│   ├── timeline.css       # Wedding timeline
-│   ├── story.css          # Our Story section
-│   ├── gallery.css        # Photo carousel
-│   ├── entourage.css      # Bridal entourage
-│   ├── reminders.css      # Reminders & RSVP
-│   ├── music-widget.css   # Floating music player
-│   └── footer.css         # Footer styles
+├── api/                    # Serverless handlers (deployed on Vercel)
+│   └── rsvp.js             # Secure RSVP proxy to Supabase
 ├── components/             # Componentized JavaScript
-│   ├── countdown.js       # Countdown timer
-│   ├── carousel.js        # Photo carousel
-│   ├── music-widget.js    # Widget toggle logic
-│   ├── scroll-animations.js # Intersection observer
-│   ├── react-music-player.js # React music player
-│   └── react-rsvp-form.js # React RSVP form
+│   ├── countdown.js        # Countdown timer
+│   ├── carousel.js         # Photo carousel
+│   ├── music-widget.js     # Widget toggle logic
+│   ├── scroll-animations.js# Intersection observer
+│   ├── react-music-player.js
+│   └── react-rsvp-form.js
+├── css/                    # Componentized CSS (base, hero, etc.)
 ├── photos/                 # Prenup photos
 ├── songs/                  # MP3 files for music player
 ├── physical invitation/    # Reference images
-├── supabase.config.js     # Supabase configuration
-├── details.md             # Wedding details reference
-└── README.md              # This file
+├── details.md              # Wedding details reference
+└── README.md               # This file
 ```
+
 
 ## How to Run
 
@@ -81,12 +73,13 @@ The app already points to the same Supabase project via `app.json > extra`. Upda
 
 ## Supabase Configuration
 
-1. In the Supabase dashboard, copy your Project URL and anon public key
-2. Edit `supabase.config.js`:
-   ```javascript
-   window.SUPABASE_URL = 'https://YOUR-PROJECT.supabase.co'
-   window.SUPABASE_ANON_KEY = 'your-anon-key'
-   ```
+1. In Supabase, create the `responses` table (SQL below) and confirm the `anon` role can `insert` (and optionally `select`) rows.
+2. In Vercel (or `vercel dev`), add the following environment variables so `api/rsvp.js` can talk to Supabase securely:
+   - `SUPABASE_URL` – e.g. `https://YOUR-PROJECT.supabase.co`
+   - `SUPABASE_ANON_KEY` – your anon public key (now kept server-side)
+3. Redeploy so the new environment variables are available to the serverless function.
+
+The frontend never loads Supabase credentials anymore; all reads/writes proxy through `api/rsvp.js`.
 
 ### Database Table
 ```sql
