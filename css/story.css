@@ -1,0 +1,31 @@
+/* ============================================
+   Our Story Section - Full-width Background Slideshow
+   Styles are primarily controlled by JS for the slideshow
+   ============================================ */
+
+.story-section {
+  /* Base styles - JS will override these for slideshow */
+  background: var(--cream);
+}
+
+/* Hide the original timeline - JS will use it for data */
+.story-timeline {
+  display: none;
+}
+
+/* Responsive adjustments for story card */
+@media (max-width: 600px) {
+  .story-section .story-card {
+    padding: 28px 24px !important;
+    margin: 0 16px;
+  }
+  
+  .story-section .s-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .story-section .s-text {
+    font-size: 0.9rem !important;
+  }
+}
+

@@ -1,0 +1,129 @@
+/* ============================================
+   Details Section
+   ============================================ */
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.detail-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--dusty-blue-pale);
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.detail-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--dusty-blue-pale);
+  border-radius: 50%;
+}
+
+.card-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--dusty-blue-dark);
+}
+
+.detail-card h3 {
+  font-family: var(--font-family-base);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dusty-blue-dark);
+  margin-bottom: 12px;
+}
+
+.detail-card .highlight {
+  font-family: var(--font-family-base);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.detail-card p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+/* Attire palette */
+.attire-palette {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+  margin-bottom: 12px;
+}
+
+.attire-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.06);
+  box-shadow: var(--shadow-sm);
+}
+
+.swatch-dusty-blue { background: var(--dusty-blue); }
+.swatch-dusty-blue-pale { background: var(--dusty-blue-pale); }
+.swatch-beige { background: #D8C7A3; }
+.swatch-cream { background: var(--cream); }
+.swatch-navy { background: var(--navy); }
+.swatch-black { background: #000; }
+
+.attire-note {
+  margin-top: 8px;
+  font-size: 0.88rem;
+  color: var(--text-dark);
+}
+
+/* Per-line attire blocks */
+.attire-item { margin-top: 6px; }
+
+.map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--dusty-blue-dark);
+  margin-top: 8px;
+  transition: color var(--transition-fast);
+}
+
+.map-link:hover {
+  color: var(--navy);
+}
+
+.map-embed {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--dusty-blue-pale);
+}
+
+.map-embed iframe {
+  width: 100%;
+  height: 350px;
+  border: 0;
+  display: block;
+}

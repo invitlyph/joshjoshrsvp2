@@ -1,0 +1,41 @@
+/* ============================================
+   Josh & Joy Wedding - Main Stylesheet
+   Componentized CSS Imports
+   ============================================ */
+
+@import url('css/base.css');
+@import url('css/hero.css');
+@import url('css/details.css');
+@import url('css/timeline.css');
+@import url('css/story.css');
+@import url('css/entourage.css');
+@import url('css/reminders.css');
+@import url('css/music-widget.css');
+@import url('css/footer.css');
+
+/* ============================================
+   Utility Classes & Animations
+   ============================================ */
+
+/* Scroll animations */
+.section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Story section should always be visible (has its own animations) */
+.story-section {
+  opacity: 1;
+  transform: none;
+}
+
+/* Text utilities */
+.text-center { text-align: center; }
+.mb-0 { margin-bottom: 0; }
+.mt-2 { margin-top: 1rem; }

@@ -1,0 +1,282 @@
+/* ============================================
+   Base Variables, Typography, and Layout
+   ============================================ */
+
+:root {
+  --color-dusty-blue: #7B8FA1;
+  --color-dusty-blue-dark: #6A7C8E;
+  --color-dusty-blue-soft: #A7B8C5;
+  --color-ivory: #FAF9F7;
+  --color-card: #FFFFFF;
+  --color-charcoal: #2E2E2E;
+  --color-muted: #545F69;
+  --color-border: #E6E8EC;
+  --color-gold: #C9B37E;
+
+  /* Legacy aliases kept for existing sections */
+  --dusty-blue: var(--color-dusty-blue);
+  --dusty-blue-dark: var(--color-dusty-blue-dark);
+  --dusty-blue-light: var(--color-dusty-blue-soft);
+  --dusty-blue-pale: var(--color-dusty-blue-soft);
+  --navy: var(--color-charcoal);
+  --navy-dark: #1F1F1F;
+  --cream: var(--color-ivory);
+  --cream-dark: #F1F0EB;
+  --gold: var(--color-gold);
+  --gold-light: var(--color-gold);
+  --white: var(--color-card);
+  --text-dark: var(--color-charcoal);
+  --text-muted: var(--color-muted);
+  --border-color: var(--color-border);
+
+  --font-family-base: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-family-script: 'Great Vibes', 'Playfair Display', serif;
+
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.12);
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --card-radius: 16px;
+
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --section-padding: 80px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-dark);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-base);
+  font-weight: 500;
+  margin: 0 0 0.65rem;
+  line-height: 1.2;
+  color: var(--text-dark);
+}
+
+h1 {
+  font-size: clamp(2.8rem, 6vw, 3.75rem);
+  letter-spacing: 0.02em;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dusty-blue-dark);
+}
+
+h3 {
+  font-size: 1.45rem;
+  letter-spacing: 0.04em;
+  color: var(--dusty-blue-dark);
+}
+
+h4 {
+  font-size: 1.15rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dusty-blue-dark);
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+.text-small {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.script-title {
+  font-family: var(--font-family-script);
+  font-size: 2.4rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+a {
+  color: var(--dusty-blue-dark);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-charcoal);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: var(--font-family-base);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-medium);
+}
+
+.btn.primary {
+  background: var(--dusty-blue);
+  color: var(--white);
+  box-shadow: var(--card-shadow);
+}
+
+.btn.primary:hover {
+  background: var(--dusty-blue-dark);
+  transform: translateY(-2px);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 12px 30px rgba(10, 18, 26, 0.12);
+}
+
+.btn.ghost:hover {
+  background: rgba(201, 179, 126, 0.2);
+  color: #fff;
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.btn.outline {
+  background: transparent;
+  color: var(--dusty-blue-dark);
+  border-color: rgba(123, 154, 171, 0.4);
+  box-shadow: 0 12px 30px rgba(10, 18, 26, 0.1);
+}
+
+.btn.outline:hover {
+  background: rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: 24px;
+}
+
+/* Section Base */
+.section {
+  padding: var(--section-padding) 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section + .section {
+  margin-top: 60px;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.section-ornament {
+  color: var(--dusty-blue);
+  font-size: 1.2rem;
+  opacity: 0.6;
+}
+
+/* Section backgrounds */
+.details-section {
+  background: var(--cream);
+  position: relative;
+}
+
+.details-timeline-wrap .details-section,
+.details-timeline-wrap .timeline-section {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 28px;
+  box-shadow: 0 30px 60px rgba(32, 40, 51, 0.15);
+  backdrop-filter: blur(20px);
+  padding: var(--section-padding) 24px;
+  margin: 0 auto 30px;
+}
+
+.details-timeline-wrap {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(250, 249, 247, 0.92), rgba(122, 143, 161, 0.2)),
+    url('../background/4.png') center/cover;
+  padding: 40px 0;
+}
+
+@media (max-width: 700px) {
+  .section {
+    padding: 48px 18px;
+  }
+
+  .section + .section {
+    margin-top: 32px;
+  }
+
+  .details-timeline-wrap .details-section,
+  .details-timeline-wrap .timeline-section {
+    padding: 48px 18px;
+    border-radius: 18px;
+    margin-bottom: 24px;
+  }
+}
+
+.timeline-section,
+.story-section,
+.reminders-section,
+.rsvp-section {
+  background: var(--cream);
+  position: relative;
+}
+
+.gallery-section {
+  background: var(--navy-dark);
+  max-width: none;
+  padding: var(--section-padding) 0;
+  position: relative;
+}
+
+.entourage-section {
+  background: var(--cream);
+  max-width: none;
+  padding: 80px 24px 60px;
+  position: relative;
+}
+
+.footer {
+  position: relative;
+  background: var(--navy-dark);
+}

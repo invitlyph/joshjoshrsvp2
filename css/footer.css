@@ -1,0 +1,49 @@
+/* ============================================
+   Footer
+   ============================================ */
+
+.footer {
+  background: var(--navy-dark);
+  color: var(--white);
+  text-align: center;
+  padding: 60px 24px;
+}
+
+.footer-ornament {
+  font-size: 1.5rem;
+  color: var(--dusty-blue-light);
+  margin-bottom: 16px;
+}
+
+.footer-names {
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.footer-date {
+  font-family: var(--font-family-base);
+  font-size: 1.1rem;
+  color: var(--dusty-blue-light);
+  margin-bottom: 8px;
+}
+
+.footer-tagline {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.footer-hashtag {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--dusty-blue-light);
+  color: var(--dusty-blue-light);
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}

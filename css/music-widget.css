@@ -1,0 +1,387 @@
+/* ============================================
+   Floating Music Widget - Circle when collapsed
+   ============================================ */
+
+.music-widget {
+  position: fixed;
+  /* Cross-browser fallback first */
+  bottom: 16px;
+  right: 16px;
+  /* Safe-area aware overrides (ignored where unsupported) */
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  z-index: 1000;
+  transition: all var(--transition-medium);
+}
+
+/* Expanded State */
+.music-widget.expanded {
+  width: 320px;
+  max-width: calc(100vw - 48px);
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.music-widget.expanded .music-widget-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--dusty-blue);
+  color: var(--white);
+  cursor: pointer;
+  user-select: none;
+}
+
+.music-widget.expanded .music-icon {
+  font-size: 1rem;
+  width: 24px;
+  text-align: center;
+}
+
+.music-widget.expanded .music-text {
+  flex: 1;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-widget.expanded .music-collapse {
+  background: none;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-medium);
+}
+
+.music-widget.expanded .chevron {
+  font-size: 0.75rem;
+}
+
+.music-widget.expanded .music-widget-body {
+  max-height: 400px;
+  padding: 16px;
+  overflow: hidden;
+  transition: all var(--transition-medium);
+  opacity: 1;
+}
+
+/* Collapsed State - Circle Button */
+.music-widget.collapsed {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--dusty-blue);
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.music-widget.collapsed:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 32px rgba(90, 122, 138, 0.4);
+}
+
+.music-widget.collapsed .music-widget-header {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.music-widget.collapsed .music-icon {
+  font-size: 1.5rem;
+  color: var(--white);
+}
+
+.music-widget.collapsed .music-text,
+.music-widget.collapsed .music-collapse,
+.music-widget.collapsed .music-widget-body {
+  display: none;
+}
+
+/* Playing animation for collapsed state */
+.music-widget.collapsed.playing .music-icon {
+  /* Opacity pulse + smooth rotation */
+  animation: pulse-music 1.8s ease-in-out infinite, spin-music 6s linear infinite;
+}
+
+/* Ripple ring around the circle when playing */
+.music-widget.collapsed.playing::before,
+.music-widget.collapsed.playing::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+  transform: scale(1);
+  opacity: 0.8;
+  animation: music-ripple 1.8s ease-out infinite;
+  pointer-events: none; /* allow clicks to pass through */
+}
+
+/* Subtle hint bubble for autoplay-muted state */
+.music-widget.collapsed.tap-hint::after {
+  content: 'Tap to listen';
+  position: absolute;
+  right: 70px;
+  bottom: 50%;
+  transform: translateY(50%);
+  background: var(--white);
+  color: var(--navy);
+  border: 1px solid var(--dusty-blue-pale);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 6px 10px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0.95;
+  animation: hint-fade 1s ease both;
+}
+
+@keyframes hint-fade {
+  from { opacity: 0; transform: translateY(50%) translateX(6px); }
+  to   { opacity: 0.95; transform: translateY(50%) translateX(0); }
+}
+
+.music-widget.collapsed.playing::after {
+  animation-delay: 0.9s;
+}
+
+@keyframes pulse-music {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes spin-music {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes music-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(1.8);
+    opacity: 0.15;
+  }
+  100% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+}
+
+/* Hidden state */
+.music-widget.hidden {
+  transform: translateY(100px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Compact Player Styles inside widget */
+.music-widget .player {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.music-widget .now {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.music-widget .title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-widget .time {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Control buttons container */
+.music-widget .controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+/* All control buttons - centered icons */
+.music-widget .controls .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1;
+  border-radius: 50%;
+  background: var(--dusty-blue);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.music-widget .controls .btn:hover {
+  background: var(--dusty-blue-dark);
+  transform: scale(1.05);
+}
+
+/* Ghost buttons (prev/next) - slightly smaller */
+.music-widget .controls .btn.ghost {
+  width: 36px;
+  height: 36px;
+  background: var(--cream);
+  color: var(--dusty-blue-dark);
+  border: 1px solid var(--dusty-blue-pale);
+  font-size: 0.9rem;
+}
+
+.music-widget .controls .btn.ghost:hover {
+  background: var(--dusty-blue-pale);
+  color: var(--navy);
+}
+
+.music-widget .row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.music-widget .progress {
+  flex: 1;
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--dusty-blue-pale);
+  cursor: pointer;
+}
+
+.music-widget .progress::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--dusty-blue);
+  cursor: pointer;
+}
+
+.music-widget .volume {
+  width: 80px;
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--dusty-blue-pale);
+  cursor: pointer;
+}
+
+.music-widget .volume::-webkit-slider-thumb {
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--dusty-blue);
+  cursor: pointer;
+}
+
+.music-widget .playlist {
+  max-height: 160px;
+  overflow-y: auto;
+  margin-top: 12px;
+  display: grid;
+  gap: 4px;
+}
+
+.music-widget .track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: var(--cream);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.music-widget .track:hover {
+  background: var(--dusty-blue-pale);
+}
+
+.music-widget .track .name {
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-dark);
+}
+
+.music-widget .track .dur {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.music-widget .track.active {
+  background: var(--dusty-blue-pale);
+  border-color: var(--dusty-blue);
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .music-widget {
+    bottom: 16px;
+    right: 16px;
+  }
+  
+  .music-widget.expanded {
+    width: calc(100vw - 32px);
+    right: 16px;
+  }
+  
+  .music-widget.collapsed {
+    width: 52px;
+    height: 52px;
+  }
+}

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Moments - Forever Start - Josh & Joy</title>
+    <meta name="description" content="Moments - Forever Start - Josh & Joy. Celebrate the union, RSVP, and share every treasured moment with us." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Moments - Forever Start - Josh & Joy" />
+    <meta property="og:description" content="Celebrate Moments - Forever Start - Josh & Joy. RSVP and relive the love story with us." />
+    <meta property="og:image" content="https://foreverstarts.co/photos/prenup1.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://foreverstarts.co" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Moments - Forever Start - Josh & Joy" />
+    <meta name="twitter:description" content="Celebrate love, RSVP, and share memories from Moments - Forever Start - Josh & Joy." />
+    <meta name="twitter:image" content="https://foreverstarts.co/photos/prenup1.png" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.svg">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    <meta name="theme-color" content="#7B9AAB">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Floating Music Widget -->
+    <div id="musicWidget" class="music-widget collapsed">
+      <div class="music-widget-header" id="musicWidgetToggle">
+        <span class="music-icon">&#9835;</span>
+        <span class="music-text">Now Playing</span>
+        <button class="music-collapse" aria-label="Toggle music player">
+          <span class="chevron">&#9660;</span>
+        </button>
+      </div>
+      <div class="music-widget-body" id="musicWidgetBody">
+        <div id="floatingMusicPlayer"></div>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="hero-bg" role="img" aria-label="Josh and Joy photo"></div>
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <p class="blessing">In the presence of God and with the blessing of our families</p>
+        <h1 class="couple"><span class="name">Josh</span> <span class="amp">&</span> <span class="name">Joy</span></h1>
+        <p class="tagline">humbly invite you to witness our holy union in marriage</p>
+        <div class="date-badge">
+          <span class="day">Thursday</span>
+          <span class="date">January 22, 2026</span>
+          <span class="time">3:00 PM</span>
+        </div>
+        <div id="countdown" aria-live="polite" class="countdown" title="Countdown to the big day"></div>
+        <div class="hero-actions">
+          <a class="btn primary scroll-indicator" href="#responses">
+            <span>RSVP Now</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+          <a class="btn ghost" href="https://moments.foreverstarts.co">
+            <span>Share Moments</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 12h16M12 4l8 8-8 8"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="details-timeline-wrap">
+      <!-- Event Details Section -->
+      <section id="details" class="section details-section">
+        <div class="section-header">
+          <span class="section-ornament">&#10087;</span>
+          <h2>Event Details</h2>
+          <span class="section-ornament">&#10087;</span>
+        </div>
+        <div class="details-grid">
+          <div class="detail-card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            </div>
+            <h3>Date & Time</h3>
+            <p class="highlight">Thursday, January 22, 2026</p>
+            <p class="highlight">3:00 PM</p>
+          </div>
+          <div class="detail-card venue-card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3>Venue</h3>
+            <p class="highlight">Greenridge Resort</p>
+            <p>Sitio Dita, Masalukot 1</p>
+            <p>Candelaria, Quezon</p>
+            <a class="map-link" href="https://maps.app.goo.gl/QEPMUNr198oxWy3U8" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Open in Google Maps
+            </a>
+          </div>
+          <div class="detail-card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3>Attire Guide</h3>
+            <div class="attire-item">
+              <p><strong>Ninong:</strong> Dusty Blue or Black</p>
+              <div class="attire-palette" aria-label="Ninong color palette">
+                <span class="attire-swatch swatch-dusty-blue" aria-hidden="true"></span>
+                <span class="attire-swatch swatch-black" aria-hidden="true"></span>
+              </div>
+            </div>
+            <div class="attire-item">
+              <p><strong>Ninang:</strong> Dusty Blue Formal</p>
+              <div class="attire-palette" aria-label="Ninang color palette">
+                <span class="attire-swatch swatch-dusty-blue" aria-hidden="true"></span>
+              </div>
+            </div>
+            <div class="attire-item">
+              <p><strong>Guests:</strong> Formal/Semi-formal in Beige</p>
+              <div class="attire-palette" aria-label="Guest color palette">
+                <span class="attire-swatch swatch-beige" aria-hidden="true"></span>
+              </div>
+            </div>
+            <p class="attire-note">We respectfully request our guests to come in attire that complements our wedding motif and colors. For the comfort of all, please avoid wearing sando, T-shirts, shorts, and slippers. Thank you for helping us maintain a beautiful celebration.</p>
+          </div>
+        </div>
+        <div class="map-embed">
+          <iframe title="Greenridge Resort Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Greenridge%20Resort%20Candelaria%20Quezon&output=embed"></iframe>
+        </div>
+      </section>
+
+      <!-- Timeline Section -->
+      <section id="timeline" class="section timeline-section">
+        <div class="section-header">
+          <span class="section-ornament">&#10087;</span>
+          <h2>Wedding Timeline</h2>
+          <span class="section-ornament">&#10087;</span>
+        </div>
+        <div class="timeline-flow">
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <!-- Door/Arrival icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/><path d="M9 21v-6h6v6"/><circle cx="14" cy="11" r="1"/></svg>
+            </div>
+            <div class="timeline-info">
+              <span class="event-name">Guest Arrival</span>
+              <span class="event-desc">Welcome & seating of guests</span>
+              <span class="event-time">2:30 PM</span>
+            </div>
+          </div>
+          <div class="timeline-connector"></div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <!-- Church/Ceremony icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 22H6a2 2 0 0 1-2-2V9l8-7 8 7v11a2 2 0 0 1-2 2z"/><path d="M12 2v3"/><path d="M10 3.5h4"/><path d="M9 22v-5a3 3 0 0 1 6 0v5"/><rect x="9" y="12" width="2" height="3"/><rect x="13" y="12" width="2" height="3"/></svg>
+            </div>
+            <div class="timeline-info">
+              <span class="event-name">Wedding Ceremony</span>
+              <span class="event-desc">Exchange of vows & rings</span>
+              <span class="event-time">3:00 PM</span>
+            </div>
+          </div>
+          <div class="timeline-connector"></div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <!-- Camera icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="14" rx="2"/><circle cx="12" cy="13" r="4"/><circle cx="17" cy="9" r="1"/><path d="M6 6l1.5-2h9L18 6"/></svg>
+            </div>
+            <div class="timeline-info">
+              <span class="event-name">Photo Session</span>
+              <span class="event-desc">Family & group photos</span>
+              <span class="event-time">4:00 PM</span>
+            </div>
+          </div>
+          <div class="timeline-connector"></div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <!-- Cocktail/Reception icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 22h8"/><path d="M12 17v5"/><path d="M5 2l7 10 7-10"/><path d="M5 2h14"/></svg>
+            </div>
+            <div class="timeline-info">
+              <span class="event-name">Cocktail Hour</span>
+              <span class="event-desc">Light refreshments & mingling</span>
+              <span class="event-time">5:00 PM</span>
+            </div>
+          </div>
+          <div class="timeline-connector"></div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <!-- Grand entrance icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="timeline-info">
+              <span class="event-name">Reception Program</span>
+              <span class="event-desc">Grand entrance & first dance</span>
+              <span class="event-time">6:00 PM</span>
+            </div>
+          </div>
+          <div class="timeline-connector"></div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <!-- Champagne glass icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 22h8"/><path d="M12 17v5"/><path d="M7 2h10l-1 9a4 4 0 0 1-8 0L7 2z"/><path d="M7 5h10"/></svg>
+            </div>
+            <div class="timeline-info">
+              <span class="event-name">Toast & Speeches</span>
+              <span class="event-desc">Words from loved ones</span>
+              <span class="event-time">6:30 PM</span>
+            </div>
+          </div>
+          <div class="timeline-connector"></div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <!-- Dinner plate/cloche icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="17" rx="10" ry="4"/><path d="M2 17c0-6 4.5-11 10-11s10 5 10 11"/><line x1="12" y1="6" x2="12" y2="3"/><circle cx="12" cy="2" r="1"/></svg>
+            </div>
+            <div class="timeline-info">
+              <span class="event-name">Dinner</span>
+              <span class="event-desc">Feast & celebration</span>
+              <span class="event-time">7:00 PM</span>
+            </div>
+          </div>
+          <div class="timeline-connector"></div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <!-- Celebration/confetti icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.8 11.3L2 22l10.7-3.8"/><path d="M4 3h.01M22 8h.01M15 2h.01M22 20h.01M18 14l3-3M7 4l2 2M20 9l-3 3"/><circle cx="9" cy="9" r="2"/><path d="M12.7 12.7L22 22"/></svg>
+            </div>
+            <div class="timeline-info">
+              <span class="event-name">Party & Dancing</span>
+              <span class="event-desc">Let's celebrate together!</span>
+              <span class="event-time">8:00 PM</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      </div>
+
+      <!-- Our Story Section - Full-width background slideshow -->
+      <section id="story" class="section story-section">
+        <div class="section-header">
+          <span class="section-ornament">&#10087;</span>
+          <h2>Our Story</h2>
+          <span class="section-ornament">&#10087;</span>
+        </div>
+        <!-- Story items (hidden, used by JS for data) -->
+        <div class="story-timeline">
+          <div class="story-item">
+            <div class="story-year">Elementary</div>
+            <div class="story-content">
+              <h4>Schoolmates Without Knowing</h4>
+              <p>We didn't know we were schoolmates in elementary. God was already writing our story.</p>
+            </div>
+          </div>
+          <div class="story-item">
+            <div class="story-year">2014</div>
+            <div class="story-content">
+              <h4>First Meeting</h4>
+              <p>We officially met at a Youth Camp — where our journey truly began.</p>
+            </div>
+          </div>
+          <div class="story-item">
+            <div class="story-year">December 2017</div>
+            <div class="story-content">
+              <h4>Our First Date</h4>
+              <p>A memorable December day that marked the start of something beautiful.</p>
+            </div>
+          </div>
+          <div class="story-item">
+            <div class="story-year">2018</div>
+            <div class="story-content">
+              <h4>Officially Together</h4>
+              <p>We became boyfriend and girlfriend, beginning our journey as partners in life.</p>
+            </div>
+          </div>
+          <div class="story-item">
+            <div class="story-year">January 2026</div>
+            <div class="story-content">
+              <h4>Forever Begins</h4>
+              <p>And now, we take the next step — becoming husband and wife.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Entourage Section -->
+      <section id="entourage" class="section entourage-section">
+        <div class="section-header">
+          <span class="section-ornament">&#10087;</span>
+          <h2>Wedding Party</h2>
+          <span class="section-ornament">&#10087;</span>
+        </div>
+        <p class="entourage-subtitle">Macaraig &ndash; Delantar Nuptials</p>
+        <div class="entourage-toggle-wrap">
+          <button
+            class="btn outline entourage-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="entourageContent"
+          >
+            <span class="toggle-label">Meet the Entourage</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+        </div>
+
+        <div id="entourageContent" class="entourage-content is-collapsed" aria-hidden="true">
+          <!-- Parents -->
+          <div class="entourage-group parents-group">
+            <div class="parent-column">
+              <h3 class="script-title">Parents of the Groom</h3>
+              <p>Mr. Eladio Macaraig</p>
+              <p>Mrs. Ruth Macaraig</p>
+            </div>
+            <div class="parent-column">
+              <h3 class="script-title">Parents of the Bride</h3>
+              <p>Mr. Dante Delantar</p>
+              <p>Mrs. Lorena Delantar</p>
+            </div>
+          </div>
+
+          <!-- Principal Sponsors -->
+          <div class="entourage-group principal-sponsors">
+            <h3 class="script-title">Principal Sponsors</h3>
+            <p class="sponsor-note">To stand as witness to our vows</p>
+            <div class="sponsors-grid">
+              <div class="sponsor-column">
+                <p>Ptr. Nick Cuevas</p>
+                <p>Mr. James Ta&ntilde;o</p>
+                <p>Mr. Grenaldo Macaraig</p>
+                <p>Mr. Nelson Boongaling</p>
+                <p>Mr. Celso Macasaet</p>
+                <p>Mr. Josafat Cariquitan</p>
+                <p>Mr. Gerardus Maria Van Golen</p>
+              </div>
+              <div class="sponsor-column">
+                <p>Mrs. Irene Cuevas</p>
+                <p>Dra. Estela Ta&ntilde;o</p>
+                <p>Dra. Connie Amat</p>
+                <p>Mrs. Arlene Boongaling</p>
+                <p>Mrs. Lorna Briones</p>
+                <p>Mrs. Brazil Cariquitan</p>
+                <p>Mrs. Adora Van Golen</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Best Man & Maid of Honor -->
+          <div class="entourage-group honor-group">
+            <p class="sponsor-note">To assist us in our needs</p>
+            <div class="honor-grid">
+              <div class="honor-column">
+                <h3 class="script-title">Best Man</h3>
+                <p>Mr. Mark Andrew Macaraig</p>
+              </div>
+              <div class="honor-column">
+                <h3 class="script-title">Maid of Honor</h3>
+                <p>Ms. Kyla Mae Delantar</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secondary Sponsors -->
+          <div class="entourage-group secondary-sponsors">
+            <h3 class="script-title">Secondary Sponsors</h3>
+            <div class="secondary-grid">
+              <div class="secondary-item">
+                <h4>Candle</h4>
+                <p>Mr. Noel Cuevas</p>
+                <p>Ms. Jessa Mae Caponpon</p>
+              </div>
+              <div class="secondary-item">
+                <h4>Veil</h4>
+                <p>Mr. Raffy Baje</p>
+                <p>Ms. Mary Faith Magtibay</p>
+              </div>
+              <div class="secondary-item">
+                <h4>Cord</h4>
+                <p>Mr. Kel Samuel Magadia</p>
+                <p>Ms. Donna Aquino</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Groomsmen & Bridesmaids -->
+          <div class="entourage-group">
+            <p class="sponsor-note">To guide us in our way</p>
+            <div class="sponsors-grid">
+              <div class="sponsor-column">
+                <h3 class="script-title">Groomsmen</h3>
+                <p>Mr. Mark Xian Gases</p>
+                <p>Mr. Dhanrick Macaraig</p>
+                <p>Mr. Arjonel Candelaria</p>
+                <p>Mr. Timothy Soriano</p>
+                <p>Mr. Marc Joel Baldoz</p>
+                <p>Mr. James Carlo Holanda</p>
+                <p>Mr. John Paul Cadacio</p>
+                <p>Mr. Carmelo Mercado</p>
+                <p>Mr. Jilyahn Raphael Satimbre</p>
+              </div>
+              <div class="sponsor-column">
+                <h3 class="script-title">Bridesmaids</h3>
+                <p>Ms. Daren Kate Delantar</p>
+                <p>Ms. Charice Macaraig</p>
+                <p>Ms. Angeline Candelaria</p>
+                <p>Ms. Jaycel Madelin Soriano</p>
+                <p>Ms. Quennie Rose Aquino</p>
+                <p>Ms. Yasmin Dae Guce</p>
+                <p>Ms. Michelle Dumandan</p>
+                <p>Ms. Jean Seychelle Macasaet</p>
+                <p>Ms. Hazel Bagon</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Special Roles -->
+          <div class="entourage-group special-roles">
+            <div class="special-grid bearers-grid">
+              <div class="special-item">
+                <h4>Ring Bearer</h4>
+                <p class="role-note">To carry our symbol of love</p>
+                <p>Kaiden Jace De Villa</p>
+              </div>
+              <div class="special-item">
+                <h4>Bible Bearer</h4>
+                <p class="role-note">To carry our symbol of faith</p>
+                <p>Daven Kye Baje</p>
+              </div>
+              <div class="special-item">
+                <h4>Coin Bearer</h4>
+                <p class="role-note">To carry our symbol of treasure</p>
+                <p>Kim Magadia</p>
+              </div>
+            </div>
+            <div class="special-grid">
+              <div class="special-item">
+                <h4>Little Groom</h4>
+                <p>Jeon Carlos Gonzales</p>
+              </div>
+              <div class="special-item">
+                <h4>Little Bride</h4>
+                <p>Zoey Danao</p>
+              </div>
+            </div>
+            <div class="flower-girls">
+              <h4>Flower Girls</h4>
+              <p class="role-note">To shower our path with flowers</p>
+              <p>Ma. Nathalie Gases</p>
+              <p>Elisha Shane Danao</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reminders & Gift Note -->
+      <section id="reminders" class="section reminders-section">
+        <div class="reminders-grid">
+          <div class="reminder-card card">
+            <h3 class="script-title">Reminders</h3>
+            <ul class="reminder-list">
+              <li>Be on time</li>
+              <li>Finish the event</li>
+              <li>Enjoy and have fun</li>
+            </ul>
+          </div>
+          <div class="reminder-card gift-card card">
+            <h3 class="script-title">A Note on Gifts</h3>
+            <p>Your presence on our special day is the most meaningful gift we could ask for. If you would still like to share a monetary blessing, we've listed a few simple ways below.</p>
+          </div>
+        </div>
+        <!-- Gifts: Ways to Bless Us -->
+        <div class="gift-section">
+          <h3 class="script-title">Ways to Bless Us</h3>
+          <p class="gift-intro">Choose whichever option is most convenient for you:</p>
+          <div class="gift-grid">
+            <div class="gift-method card">
+              <div class="gift-method-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+                <h4>GCash</h4>
+              </div>
+              <div class="gift-info-row" onclick="copyInfo('Joy Ann Delantar', this)">
+                <span class="gift-name">Joy Ann Delantar</span>
+                <svg class="copy-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <svg class="check-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="gift-info-row" onclick="copyInfo('09667907879', this)">
+                <span class="gift-number">0966 790 7879</span>
+                <svg class="copy-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <svg class="check-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <img src="gcash/gcash.png" alt="GCash QR Code - Scan to send" loading="lazy" class="gift-qr" />
+            </div>
+            <div class="gift-method card">
+              <div class="gift-method-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <h4>Maya</h4>
+              </div>
+              <div class="gift-info-row" onclick="copyInfo('Joshua Baje Macaraig', this)">
+                <span class="gift-name">Joshua Baje Macaraig</span>
+                <svg class="copy-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <svg class="check-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="gift-info-row" onclick="copyInfo('Maya Bank, Inc', this)">
+                <span class="gift-bank">Maya Bank, Inc</span>
+                <svg class="copy-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <svg class="check-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="gift-info-row" onclick="copyInfo('808468995374', this)">
+                <span class="gift-number">8084 6899 5374</span>
+                <svg class="copy-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <svg class="check-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>
+            <div class="gift-method card">
+              <div class="gift-method-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <h4>Cash Gift</h4>
+              </div>
+              <p class="gift-desc">You may also hand your gift personally at the reception. A gift box will be available at the venue.</p>
+            </div>
+          </div>
+          <p class="gift-note">Thank you for being part of our special day. Your love and support mean the world to us.</p>
+        </div>
+      </section>
+
+      <!-- RSVP Section -->
+      <section id="responses" class="section rsvp-section">
+        <div class="section-header">
+          <span class="section-ornament">&#10087;</span>
+          <h2>Share a Message</h2>
+          <span class="section-ornament">&#10087;</span>
+        </div>
+        <div id="responseSpotlight" class="response-spotlight-shell"></div>
+        <p class="rsvp-subtitle">Let us know if you can come, and leave a note for the couple.</p>
+        <div id="rsvpReact"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-ornament">&#10087;</div>
+      <p class="footer-names">Josh & Joy</p>
+      <p class="footer-date">January 22, 2026</p>
+      <p class="footer-tagline">Two hearts, one love, forever</p>
+      <a class="footer-hashtag" href="https://www.facebook.com/share/p/14RwqjSqr8w/" target="_blank" rel="noopener noreferrer">#JoshGotHisForeverJoy</a>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script src="script.js"></script>
+    <script src="components/countdown.js"></script>
+    <script src="components/hero-slideshow.js"></script>
+    <script src="components/story-slideshow.js"></script>
+    <script src="components/music-widget.js"></script>
+    <script src="components/scroll-animations.js"></script>
+    <!-- React + ReactDOM (UMD) -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Supabase JS v2 -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Supabase config -->
+    <script src="supabase.config.js"></script>
+    <!-- React widgets -->
+    <script src="components/react-music-player.js"></script>
+    <script src="components/react-rsvp-form.js"></script>
+  </body>
+</html>

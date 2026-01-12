@@ -1,0 +1,438 @@
+/* ============================================
+   Entourage Section
+   ============================================ */
+
+.entourage-section {
+  position: relative;
+  background: linear-gradient(rgba(250, 249, 247, 0.95), rgba(122, 143, 161, 0.2)),
+    url('../background/4.png') center/cover fixed;
+  max-width: none;
+  padding: 90px 24px;
+  overflow: hidden;
+}
+
+.entourage-section > * {
+  position: relative;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.entourage-subtitle {
+  position: relative;
+  text-align: center;
+  font-family: var(--font-family-base);
+  font-size: 1.4rem;
+  color: var(--dusty-blue-dark);
+  margin-bottom: 2rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.entourage-subtitle::after {
+  content: '';
+  display: block;
+  width: 90px;
+  height: 2px;
+  margin: 16px auto 0;
+  background: var(--gold);
+  opacity: 0.3;
+}
+
+.entourage-toggle-wrap {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.entourage-toggle svg {
+  transition: transform 0.3s ease;
+}
+
+.entourage-toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.entourage-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: max-height 0.7s ease, opacity 0.4s ease;
+  background: transparent;
+}
+
+.entourage-content.is-collapsed {
+  margin-top: 0;
+}
+
+.entourage-content.is-expanded {
+  max-height: 5000px;
+  opacity: 1;
+  pointer-events: auto;
+  margin-top: 1.5rem;
+}
+
+/* Readable headings for Entourage */
+.entourage-section .script-title {
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  font-size: 1.7rem;
+  letter-spacing: 0.05em;
+  text-transform: none;
+  color: var(--dusty-blue-dark);
+  margin-bottom: 0.75rem;
+}
+
+.entourage-group {
+  position: relative;
+  text-align: center;
+  padding: 2.75rem 2.5rem;
+  border-radius: 28px;
+  margin-bottom: 28px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: none;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.entourage-group + .entourage-group {
+  margin-top: 20px;
+}
+
+.entourage-group::before {
+  display: none;
+}
+
+.entourage-group > * {
+  position: relative;
+  z-index: 2;
+}
+
+.parents-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.parent-column {
+  text-align: center;
+}
+
+.sponsor-note,
+.role-note {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(31, 42, 55, 0.7);
+  margin-bottom: 1.4rem;
+}
+
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 60px;
+  text-align: left;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.sponsor-column {
+  text-align: center;
+}
+
+.sponsor-column p,
+.parent-column p,
+.secondary-item p,
+.special-item p:not(.role-note),
+.flower-girls p {
+  display: block;
+  padding: 6px 0;
+  margin: 4px auto;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: rgba(22, 31, 44, 0.9);
+  font-size: 0.95rem;
+  min-width: 0;
+  backdrop-filter: none;
+}
+
+.honor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 24px;
+  border-radius: 20px;
+  background: transparent;
+}
+
+.honor-column {
+  text-align: center;
+}
+
+.secondary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 1.5rem;
+}
+
+.secondary-item {
+  text-align: center;
+  padding: 20px 18px;
+  background: transparent;
+  border-radius: 18px;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+/* Make Secondary Sponsors text slightly smaller than Principal */
+.secondary-item p {
+  font-size: 0.9rem;
+}
+
+.secondary-item h4,
+.special-item h4,
+.flower-girls h4 {
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-transform: none;
+  color: var(--dusty-blue-dark);
+  margin-bottom: 6px;
+}
+
+.special-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin-bottom: 1.5rem;
+}
+
+.special-item {
+  text-align: center;
+  padding: 20px;
+  background: transparent;
+  border-radius: 18px;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Make Bearers (and other special roles) text slightly smaller than Principal */
+.special-item p {
+  font-size: 0.9rem;
+}
+
+/* Make the bearers' subtext clearly smaller than the name */
+.special-item .role-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.05em;
+}
+
+/* Elevate the bearer name typography */
+.special-item p:last-child {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.flower-girls {
+  text-align: center;
+  padding: 26px 24px;
+  border-radius: 20px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.flower-girls h4 { /* unified with other headings */ }
+
+/* Principal Sponsors — clean glass style */
+.entourage-group.principal-sponsors {
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 28px;
+  box-shadow: none;
+  padding: 2.5rem 1.5rem;
+  margin-top: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.principal-sponsors .script-title {
+  font-size: clamp(1.9rem, 4vw, 2.4rem);
+  color: var(--dusty-blue-dark);
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.principal-sponsors .script-title::after {
+  content: '';
+  display: block;
+  width: 90px;
+  height: 2px;
+  margin: 12px auto 0;
+  background: var(--gold);
+  opacity: 0.3;
+  border-radius: 2px;
+}
+
+.principal-sponsors .sponsor-note {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--text-muted);
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+
+.principal-sponsors .sponsors-grid {
+  gap: 10px 40px;
+  max-width: 720px;
+  margin-top: 1.25rem;
+}
+
+.principal-sponsors .sponsor-column p {
+  margin: 8px auto;
+  font-size: 1rem;
+  color: rgba(22, 31, 44, 0.9);
+  min-width: 220px;
+}
+
+.special-item p.role-note,
+.secondary-item .role-note {
+  border: none;
+  background: transparent;
+  margin: 0 0 6px;
+  padding: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.flower-girls p {
+  margin: 6px auto 0;
+}
+
+@media (max-width: 640px) {
+  .entourage-section {
+    padding: 50px 16px;
+  }
+
+  .entourage-group {
+    padding: 1.5rem 1rem;
+    margin-bottom: 16px;
+    border-radius: 20px;
+  }
+
+  .entourage-group + .entourage-group {
+    margin-top: 12px;
+  }
+
+  .entourage-group::before {
+    inset: 8px;
+    border-radius: 14px;
+  }
+
+  .entourage-section .script-title {
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .entourage-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .entourage-toggle-wrap {
+    margin-bottom: 1rem;
+  }
+
+  .parents-group,
+  .sponsors-grid,
+  .honor-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .secondary-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .secondary-item {
+    padding: 14px 12px;
+  }
+
+  .secondary-item h4,
+  .special-item h4,
+  .flower-girls h4 {
+    font-size: 1.05rem;
+  }
+
+  .special-grid {
+    gap: 12px;
+  }
+
+  .special-item {
+    padding: 14px 12px;
+  }
+
+  .flower-girls {
+    padding: 18px 14px;
+  }
+
+  /* Ensure Bearers list stacks to avoid gaps */
+  .bearers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sponsor-column p,
+  .parent-column p,
+  .secondary-item p,
+  .special-item p:not(.role-note),
+  .flower-girls p {
+    min-width: 0;
+    width: 100%;
+    padding: 4px 0;
+    margin: 2px auto;
+    font-size: 0.9rem;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .sponsor-note,
+  .role-note {
+    font-size: 0.7rem;
+    margin-bottom: 1rem;
+  }
+
+  .honor-grid {
+    padding: 16px;
+  }
+
+  /* Principal sponsors mobile adjustments */
+  .entourage-group.principal-sponsors {
+    padding: 1.5rem 1rem;
+  }
+
+  .principal-sponsors .sponsors-grid {
+    gap: 8px 0;
+  }
+
+  .principal-sponsors .sponsor-column p {
+    min-width: 0;
+    font-size: 0.9rem;
+  }
+}

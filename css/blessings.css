@@ -1,0 +1,38 @@
+/* ============================================
+   Blessings (Verse & Quote)
+   ============================================ */
+
+.blessings-section {
+  background: var(--cream);
+  text-align: center;
+}
+
+.blessings-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.blessings-section .verse {
+  font-family: var(--font-family-base);
+  font-size: clamp(1.2rem, 2.8vw, 1.6rem);
+  color: var(--navy);
+  font-weight: 500;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+.blessings-section .verse .ref {
+  display: inline-block;
+  margin-left: .35rem;
+  color: var(--dusty-blue-dark);
+  font-family: var(--font-family-base);
+  font-weight: 500;
+}
+
+.blessings-section .quote {
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 4.5vw, 2.2rem);
+  color: var(--navy);
+  margin: 8px 0 0;
+}
