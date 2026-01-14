@@ -1,5 +1,5 @@
 const RSVP_TABLE_PATH =
-  '/rest/v1/responses?select=id,name,status,message,created_at&order=created_at.desc';
+  '/rest/v1/responses?select=id,name,status,message,guest_count,guest_names,created_at&order=created_at.desc';
 const INSERT_PATH = '/rest/v1/responses';
 const ALLOWED_STATUSES = new Set(['yes', 'no', 'maybe']);
 

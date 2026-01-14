@@ -21,6 +21,12 @@ A beautiful, modern wedding invitation website for Josh Macaraig and Joy Delanta
 7. **Reminders & Gift Note** - Important reminders and gift preferences
 8. **RSVP Form** - Supabase-powered form for guest responses
 
+### RSVP Management Dashboard
+- `/manage-rsvp` dashboard hosted alongside the invitation (not inside the wedding socials app)
+- Live Supabase feed with search, status filters, and quick refresh
+- RSVP and guest-count totals to help with seating + catering
+- One-click CSV export of the currently filtered view for spreadsheets or sharing
+
 ### Wedding Social Moments
 - Dedicated `social.html` page where guests create a quick profile, upload wedding-day posts, and add 24-hour stories
 - Instagram-style feed with real-time comments and multi-reaction picker backed by Supabase tables (`guests`, `posts`, `comments`, `reactions`)
@@ -63,6 +69,8 @@ prenup/
 Simply open `index.html` in a modern browser. No build step required!
 
 To explore the social feed, open `social.html` after configuring Supabase keys and the storage bucket (see below).
+
+For host-only management, serve the project (or run `npx http-server .`) and visit `http://localhost:8080/manage-rsvp` to open the RSVP dashboard.
 
 ### Mobile App (Expo)
 1. `cd wedding-social-app`

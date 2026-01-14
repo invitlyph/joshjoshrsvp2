@@ -264,31 +264,6 @@ function copyInfo(text, element) {
   init();
 })();
 
-// Music Widget Toggle
-(function initMusicWidget() {
-  const widget = document.getElementById('musicWidget');
-  const toggle = document.getElementById('musicWidgetToggle');
-  const body = document.getElementById('musicWidgetBody');
-  
-  if (!widget || !toggle) return;
-
-  // Start collapsed
-  widget.classList.add('collapsed');
-
-  toggle.addEventListener('click', () => {
-    widget.classList.toggle('collapsed');
-  });
-
-  // Add close button functionality
-  const closeBtn = widget.querySelector('.music-close');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      widget.classList.add('hidden');
-    });
-  }
-})();
-
 // Entourage toggle
 (function initEntourageToggle() {
   const content = document.getElementById('entourageContent');

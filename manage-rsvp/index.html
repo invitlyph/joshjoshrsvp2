@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RSVP Manager &mdash; Josh &amp; Joy</title>
+    <meta
+      name="description"
+      content="Private Josh &amp; Joy RSVP dashboard to review responses, guest counts, and notes from Supabase."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="theme-color" content="#7B9AAB" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/css/manage-rsvp.css" />
+  </head>
+  <body class="manage-rsvp">
+    <div class="manage-shell">
+      <header class="manage-hero">
+        <p class="hero-kicker">Josh &amp; Joy &middot; Forever Start</p>
+        <h1>RSVP Response Manager</h1>
+        <p class="hero-lede">
+          View every reply, track guest counts, and export updates &mdash; all secured beside the invitation.
+        </p>
+        <div class="hero-actions">
+          <a class="btn outline" href="/">Back to Invitation</a>
+        </div>
+      </header>
+      <main class="manage-main">
+        <div id="rsvpDashboard" class="manage-react-root">
+          <div class="card loading-card">
+            <p>Loading RSVP dashboard&hellip;</p>
+          </div>
+        </div>
+      </main>
+      <footer class="manage-footer">
+        <p>
+          Private host view for Josh &amp; Joy &mdash; data lives in Supabase Responses table.
+        </p>
+      </footer>
+    </div>
+    <noscript class="noscript-warning">Please enable JavaScript to use the RSVP dashboard.</noscript>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="/components/manage-rsvp.js"></script>
+  </body>
+</html>
