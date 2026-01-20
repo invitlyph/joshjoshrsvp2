@@ -240,6 +240,22 @@ BEGIN
 END;
 $$;
 
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies
+      WHERE schemaname = 'public'
+        AND tablename = 'posts'
+        AND policyname = 'Allow guests to update their own posts'
+  ) THEN
+    CREATE POLICY "Allow guests to update their own posts" ON public.posts
+      FOR UPDATE TO authenticated
+      USING (auth.uid() = guest_id)
+      WITH CHECK (auth.uid() = guest_id);
+  END IF;
+END;
+$$;
+
 -- ============================================
 -- 2b. POST_MEDIA TABLE (Multiple media per post)
 -- ============================================

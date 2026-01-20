@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/ceremony",
+      "destination": "/ceremony/index.html"
+    },
+    {
+      "source": "/ceremony/(.*)",
+      "destination": "/ceremony/$1"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Josh & Joy &mdash; Program & Timeline</title>
+    <meta name="description" content="Componentized program and wedding-day timeline for Josh & Joy. Update the data arrays and the page refreshes automatically." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="css/program.css" />
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <header class="program-hero">
+        <div class="hero-inner">
+          <p class="hero-eyebrow">Josh & Joy</p>
+          <h1 class="hero-title">Program & Timeline</h1>
+          <p class="hero-date">January 22, 2026 &middot; Greenridge Resort</p>
+          <p class="hero-description">
+            Direct transcription of the <em>3-pm-Ceremony-Timetable.pdf</em> and <em>LFEM_WEDDING-PROPOSED-PROGRAM.pdf</em> files so everyone shares the same playbook.
+          </p>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <span>Preparation</span>
+            <h2>Timeline & Responsibilities</h2>
+          </div>
+          <div id="prepTimeline" class="prep-grid" aria-live="polite"></div>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <span>Program Flow</span>
+            <h2>Ceremony, Cocktails & Reception</h2>
+          </div>
+          <div id="programSections" class="program-section-grid" aria-live="polite"></div>
+        </section>
+
+        <section class="section">
+          <div class="cta-card">
+            <h3>Need to adjust something?</h3>
+            <p>
+              Update <code>PREPARATION_TIMELINE</code> or <code>PROGRAM_SECTIONS</code> inside <code>components/program-page.js</code> and the cards will refresh automatically. Share this page with coordinators so everyone stays aligned.
+            </p>
+            <div class="cta-actions">
+              <a class="btn primary" href="index.html">Back to Invitation</a>
+              <a class="btn ghost" href="https://maps.app.goo.gl/QEPMUNr198oxWy3U8" target="_blank" rel="noopener">Open Venue Map</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        Built with love for Team Coordinator. Last updated <span id="lastUpdated"></span>.
+      </footer>
+    </div>
+    <script>
+      document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString(undefined, {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      });
+    </script>
+    <script src="components/program-page.js" defer></script>
+  </body>
+</html>
